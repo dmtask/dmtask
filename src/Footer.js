@@ -4,7 +4,7 @@ function Footer() {
     return(
         <footer>
             <div className="container">
-                <div className="row">
+                <div className="row small text-center mb-1">
                     <div className="col-12">
                         © Copyright 2020 dm-task.de (Daniel Mertgen)
                     </div>

@@ -15,6 +15,9 @@ function App() {
                         <a className='nav-link projects' href='#projects'>Projekte</a>
                     </li>
                     <li className='nav-item'>
+                        <a className='nav-link contacts' href="https://github.com/dmtask" target="_blank">Github</a>
+                    </li>
+                    <li className='nav-item'>
                         <a className='nav-link contacts' href='mailto:dmtask@gmx.de'>Kontakt</a>
                     </li>
                 </ul>
