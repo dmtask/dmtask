@@ -1,4 +1,3 @@
-.card {
-    width: 18rem;
-    float: left;
+.card a {
+    float: right;
 }
