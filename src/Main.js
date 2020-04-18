@@ -62,7 +62,7 @@ function getProjects() {
 
         if (!project.private) {
             let href = "https://github.com/dmtask/" + project.name;
-            githubLink = <a href={href} className="btn">Github öffnen</a>
+            githubLink = <a href={href} className="btn" target='_blank'>Github öffnen</a>
         }
 
         elements.push(
