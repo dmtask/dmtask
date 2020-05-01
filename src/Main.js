@@ -39,11 +39,11 @@ function Main() {
             </div>
         </div>
         <div className="container">
-        <div className="row mt-4">
-            <div className="col-12">
-                <h2>Projekte</h2>
+            <div className="row mt-4">
+                <div className="col-12">
+                    <h2>Projekte</h2>
+                </div>
             </div>
-        </div>
             <div className="row mt-2 mb-4" id="projects">
                 <div className="col-12">
                     {getProjects()}
