@@ -40,6 +40,16 @@ function Main() {
         </div>
         <div className="container">
             <div className="row mt-4">
+            <div className="col-12">
+                    <h2>Über mich</h2>
+                </div>
+            </div>
+            <div className="row mt-2 mb-4" id="about">
+                <div className="col-12">
+                    - Folgt -
+                </div>
+            </div>
+            <div className="row mt-4">
                 <div className="col-12">
                     <h2>Projekte</h2>
                 </div>

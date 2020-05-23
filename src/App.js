@@ -12,6 +12,9 @@ function App() {
             <div className='collapse navbar-collapse' id='navbarNav'>
                 <ul className='navbar-nav'>
                     <li className='nav-item'>
+                        <a className='nav-link projects' href='#about'>Über mich</a>
+                    </li>
+                    <li className='nav-item'>
                         <a className='nav-link projects' href='#projects'>Projekte</a>
                     </li>
                     <li className='nav-item'>
