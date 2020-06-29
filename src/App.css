@@ -9,6 +9,10 @@ html,body {
     vertical-align: text-top;
 }
 
+.optionalTitle {
+    color: red;
+}
+
 .card a {
     float: right;
 }
