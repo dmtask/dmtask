@@ -1,4 +1,6 @@
 import React from "react";
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import firebase from "firebase/app";
 import "firebase/auth";
 
@@ -19,24 +21,38 @@ class Login extends React.Component {
         let password = this.state.value;
 
         firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION).then(function() {
-            firebase.auth().signInWithEmailAndPassword(process.env.REACT_APP_LOGINEMAIL, password).catch(function(error) {
-                console.log(error);
+            firebase.auth().signInWithEmailAndPassword(process.env.REACT_APP_LOGINEMAIL, password).then(function() {
+                if (firebase.auth().currentUser) {
+                    window.setTimeout(function() {
+                        window.location = window.origin + '/#/admin';
+                    }, 1000);
+                }
+            }).catch(function(error) {
+                document.querySelector('.errorsLogin > div').innerHTML = error.code + ': ' + error.message;
+                document.getElementsByClassName('errorsLogin')[0].style.display = 'block';
             });
         });
-
-        if (firebase.auth().currentUser) {
-            window.setTimeout(function() {
-                window.location = window.origin + '/#/admin';
-            }, 2000);
-        }
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input type="password" value={this.state.value} onChange={this.handleChange} placeholder="Passwort" />
-                <input type="submit" value="Login" />
-            </form>
+            <React.Fragment>
+                <Header optionalTitle='ADMIN' isAdmin={true} />
+                <main role="main" className="container-fluid">
+                    <div className="row flex-xl-nowrap mt-4 errorsLogin">
+                        <div className="alert alert-danger" role="alert"></div>
+                    </div>
+                    <div className="row flex-xl-nowrap mt-4 mb-4">
+                        <div className="col-12 text-center">
+                            <form onSubmit={this.handleSubmit}>
+                                <input type="password" value={this.state.value} onChange={this.handleChange} placeholder="Passwort" className="form-control" />
+                                <input type="submit" value="Login" className="btn btn-primary" />
+                            </form>
+                        </div>
+                    </div>
+                </main>
+                <Footer />
+            </React.Fragment>
         );
     }
 }

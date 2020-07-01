@@ -30,32 +30,30 @@ const projects = [{
 
 function Main() {
     return (
-        <main role="main">
-            <div className="row">
-                <div className="col-12">
+        <main role="main" className="container-fluid">
+            <div className="row flex-xl-nowrap">
+                <div className="col-12 pl-0 pr-0">
                     <img src={Bild} alt="Headerbild" className="img-fluid" />
                 </div>
             </div>
-            <div className="container">
-                <div className="row mt-4">
-                    <div className="col-12">
-                        <h2>Über mich</h2>
-                    </div>
+            <div className="row mt-4">
+                <div className="col-12">
+                    <h2>Über mich</h2>
                 </div>
-                <div className="row mt-2 mb-4" id="about">
-                    <div className="col-12">
-                        - Folgt -
-                    </div>
+            </div>
+            <div className="row mt-2 mb-4" id="about">
+                <div className="col-12">
+                    - Folgt -
                 </div>
-                <div className="row mt-4">
-                    <div className="col-12">
-                        <h2>Projekte</h2>
-                    </div>
+            </div>
+            <div className="row mt-4">
+                <div className="col-12">
+                    <h2>Projekte</h2>
                 </div>
-                <div className="row mt-2 mb-4" id="projects">
-                    <div className="col-12">
-                        {getProjects()}
-                    </div>
+            </div>
+            <div className="row mt-2 mb-4" id="projects">
+                <div className="col-12">
+                    {getProjects()}
                 </div>
             </div>
         </main>
