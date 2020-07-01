@@ -3,25 +3,36 @@ import {HashRouter, Route, Redirect} from 'react-router-dom';
 import Home from './pages/Home';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
-import { AuthContext, useAuth } from "./context/auth";
+import firebase from "firebase/app";
+import "firebase/auth";
 
 import './App.css';
 
 function App() {
-    const isAuthenticated = useAuth();
+    let firebaseConfig = {
+        apiKey: process.env.REACT_APP_FIREBASE_apiKey,
+        authDomain: process.env.REACT_APP_FIREBASE_authDomain,
+        databaseURL: process.env.REACT_APP_FIREBASE_databaseURL,
+        projectId: process.env.REACT_APP_FIREBASE_projectId,
+        storageBucket: process.env.REACT_APP_FIREBASE_storageBucket,
+        messagingSenderId: process.env.REACT_APP_FIREBASE_messagingSenderId,
+        appId: process.env.REACT_APP_FIREBASE_appId,
+        measurementId: process.env.REACT_APP_FIREBASE_measurementId
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    const user = sessionStorage.getItem('firebase:authUser:' + process.env.REACT_APP_FIREBASE_apiKey + ':[DEFAULT]');
 
     return (
-        <AuthContext.Provider value={false}>
-            <HashRouter>
-                <Route exact path={"/"}>
-                    <Home />
-                </Route>
-                <Route path={"/admin"} render={() => isAuthenticated ? (<Admin />) : (<Redirect to="/login" />)} />
-                <Route path={'/login'}>
-                    <Login />
-                </Route>
-            </HashRouter>
-        </AuthContext.Provider>
+        <HashRouter>
+            <Route exact path={"/"}>
+                <Home />
+            </Route>
+            <Route path={"/admin"} render={() => user !== null ? (<Admin />) : (<Redirect to="/login" />)} />
+            <Route path={'/login'}>
+                <Login />
+            </Route>
+        </HashRouter>
     );
 }
 

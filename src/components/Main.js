@@ -38,7 +38,7 @@ function Main() {
             </div>
             <div className="container">
                 <div className="row mt-4">
-                <div className="col-12">
+                    <div className="col-12">
                         <h2>Über mich</h2>
                     </div>
                 </div>
