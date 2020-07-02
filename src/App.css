@@ -29,3 +29,7 @@ nav.bg-light a {
 .errorsLogin {
     display: none;
 }
+
+.hidden {
+    display: none;
+}
