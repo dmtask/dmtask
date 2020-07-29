@@ -23,9 +23,7 @@ class Login extends React.Component {
         firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION).then(function() {
             firebase.auth().signInWithEmailAndPassword(process.env.REACT_APP_LOGINEMAIL, password).then(function() {
                 if (firebase.auth().currentUser) {
-                    window.setTimeout(function() {
-                        window.location = window.origin + '/#/admin';
-                    }, 1000);
+                    window.location = window.origin + '/#/admin';
                 }
             }).catch(function(error) {
                 document.querySelector('.errorsLogin > div').innerHTML = error.code + ': ' + error.message;
@@ -44,7 +42,7 @@ class Login extends React.Component {
                     </div>
                     <div className="row flex-xl-nowrap mt-4 mb-4">
                         <div className="col-12 text-center">
-                            <form onSubmit={this.handleSubmit}>
+                            <form action="/#/login" onSubmit={this.handleSubmit}>
                                 <input type="password" value={this.state.value} onChange={this.handleChange} placeholder="Passwort" className="form-control" />
                                 <input type="submit" value="Login" className="btn btn-primary" />
                             </form>
