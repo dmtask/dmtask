@@ -38,12 +38,16 @@ function Main() {
             </div>
             <div className="row mt-4">
                 <div className="col-12">
-                    <h2>Über mich</h2>
+                    <h2>Software Entwickler</h2>
                 </div>
             </div>
             <div className="row mt-2 mb-4" id="about">
                 <div className="col-12">
-                    - Folgt -
+                    <span className="badge badge-pill badge-dark">Ruby</span>
+                    <span className="badge badge-pill badge-dark">PHP</span>
+                    <span className="badge badge-pill badge-dark">Javascript</span>
+                    <span className="badge badge-pill badge-dark">(S)CSS</span>
+                    <span className="badge badge-pill badge-dark">uvm.</span>
                 </div>
             </div>
             <div className="row mt-4">

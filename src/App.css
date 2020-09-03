@@ -33,3 +33,9 @@ nav.bg-light a {
 .hidden {
     display: none;
 }
+
+.badge {
+    padding: 0.8em;
+    font-size: 0.8em;
+    margin-right: 1em;
+}
