@@ -52,7 +52,7 @@ function menu(isAdmin) {
                     <a className='nav-link' href='/#/admin'>Zeittracking</a>
                 </li>
                 <li className='nav-item'>
-                    <a className='nav-link' href='/#/reports'>Reports</a>
+                    <a className='nav-link' href='/#/report'>Reports</a>
                 </li>
                 <li className='nav-item'>
                     <a className='nav-link' href='#' onClick={logout}>Logout</a>
