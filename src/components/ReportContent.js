@@ -7,8 +7,6 @@ import moment from 'moment';
 const firebase = require("firebase");
 require("firebase/firestore");
 
-let events = [];
-
 class ReportContent extends React.Component {
     calendarRef = React.createRef();
 
@@ -38,7 +36,8 @@ class ReportContent extends React.Component {
     componentDidMount() {
         let db = firebase.firestore(),
             calendar = this.calendarRef.current.getApi(),
-            sumDiff = 0;
+            sumDiffDay = [],
+            sumDiffWeek = 0;
         
         db.collection('times').get().then((query) => {
             query.forEach((doc) => {
@@ -46,19 +45,38 @@ class ReportContent extends React.Component {
                     id: doc.id,
                     start: doc.data().start.toDate(),
                     end: doc.data().end.toDate(),
-                    title: doc.data().description + ' (Zeit: ' + moment(doc.data().difference, 'HH:mm:ss').format('HH:mm:ss') + ')',
+                    title: doc.data().description + ' (Zeit: ' + doc.data().hours + ':' + doc.data().minutes + ':' + doc.data().seconds + ')',
                     editable: false
                 };
 
                 calendar.addEvent(event);
 
-                sumDiff += moment(doc.data().difference, 'HH:mm:ss').valueOf();
+                if (moment(doc.data().end.toDate()).isSame(calendar.getDate(), 'day')) {
+                    let duration = moment.duration(moment(doc.data().end.toDate()).diff(doc.data().start.toDate()));
+
+                    sumDiffDay.push({
+                        day: moment(doc.data().end.toDate()),
+                        duration: duration.milliseconds()
+                    });
+                }
             });
 
-            console.log(sumDiff);
-            console.log(moment(sumDiff).format('HH:mm:ss'));
+            console.log(sumDiffDay);
 
-            window.$('a.fc-list-day-text').append(' <b>Gesamt:</b> ' + moment(sumDiff).format('HH:mm:ss'));
+            /*let sum = 0;
+            for (let i = 0; i < sumDiffDay.length; i++) {
+                console.log(sumDiffDay[i].day.format('YYYY-MM-DD'));
+                console.log(window.$('tr.fc-list-day').attr('data-date'));
+                console.log(window.$('tr.fc-list-day').attr('data-date') === sumDiffDay[i].day.format('YYYY-MM-DD'));
+
+                if (window.$('tr.fc-list-day').attr('data-date') === sumDiffDay[i].day.format('YYYY-MM-DD')) {
+                    sum += sumDiffDay[i].duration;
+                }
+
+                
+
+                window.$('tr.fc-list-day[data-date=' + sumDiffDay[i].day.format('YYYY-MM-DD') + '] a.fc-list-day-text').append(' <b>Gesamt:</b> ' + );
+            }*/
         });
     }
 }

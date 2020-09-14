@@ -47,7 +47,10 @@ function startTimer(event) {
     start = moment();
 
     interval = setInterval(function() {
-        stopButton.value = moment().format('HH:mm:ss');
+        let currentTime = moment().format('HH:mm:ss');
+        
+        stopButton.value = currentTime;
+        sessionStorage.setItem('currentTime', currentTime); // TODO: Beim Aufruf der Seite prüfen, ob hier was drin steht und diese Zeit dann nehmen
     }, 1000);
 }
 
@@ -65,26 +68,31 @@ function stopTimer(event) {
     stopButton.value = 'Stop Timer';
 
     clearInterval(interval);
+    sessionStorage.removeItem('currentTime');
 
-    let secouds = end.diff(start, 'seconds'),
-        minutes = end.diff(start, 'minutes'),
-        hours = end.diff(start, 'hours');
+    let duration = moment.duration(end.diff(start));
+    let seconds = duration.seconds(),
+        minutes = duration.minutes(),
+        hours = duration.hours();
 
-    save(start.toDate(), end.toDate(), (hours + ':' + minutes + ':' + secouds), description);
+    save(start.toDate(), end.toDate(), (hours + ':' + minutes + ':' + seconds), description);
 }
 
 function save(start, end, diff, description) {
-    let db = firebase.firestore();
+    let db = firebase.firestore(),
+        difference = diff.split(':');
 
     db.collection("times").add({
-        difference: diff,
+        hours: difference[0],
+        minutes: difference[1],
+        seconds: difference[2],
         end: end,
         start: start,
         description: description || ''
-    }).then(function(docRef) {
+    }).then(() => {
         window.$('.toast-body').text('Zeit wurde erfolgreich eingetragen.');
         window.$('.toast').toast('show');
-    }).catch(function(error) {
+    }).catch((error) => {
         window.$('.toast-body').text('Fehler beim eintragen der Zeit: ' + error);
         window.$('.toast').toast('show');
     });
