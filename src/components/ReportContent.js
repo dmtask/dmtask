@@ -9,6 +9,7 @@ require("firebase/firestore");
 
 class ReportContent extends React.Component {
     calendarRef = React.createRef();
+    first_day = 1;
 
     render() {
         return(
@@ -26,6 +27,7 @@ class ReportContent extends React.Component {
                             initialView="listWeek"
                             locales={[ deLocale ]}
                             locale="de"
+                            firstDay={this.first_day}
                         />
                     </div>
                 </div>
@@ -38,7 +40,7 @@ class ReportContent extends React.Component {
             calendar = this.calendarRef.current.getApi(),
             sumDiffDay = [],
             sumDiffWeek = 0;
-        
+
         db.collection('times').get().then((query) => {
             query.forEach((doc) => {
                 let event = {
@@ -51,17 +53,23 @@ class ReportContent extends React.Component {
 
                 calendar.addEvent(event);
 
-                if (moment(doc.data().end.toDate()).isSame(calendar.getDate(), 'day')) {
+                /*if (moment(doc.data().end.toDate()).isSame(calendar.getDate(), 'day')) {
                     let duration = moment.duration(moment(doc.data().end.toDate()).diff(doc.data().start.toDate()));
 
                     sumDiffDay.push({
                         day: moment(doc.data().end.toDate()),
                         duration: duration.milliseconds()
                     });
+                }*/
+
+                if (moment(doc.data().start.toDate()).isSame(calendar.getDate(), 'isoWeek') && moment(doc.data().end.toDate()).isSame(calendar.getDate(), 'isoWeek')) {
+                    let duration = moment.duration(moment(doc.data().end.toDate()).diff(doc.data().start.toDate()));
+
+                    sumDiffWeek += duration.asMilliseconds();
                 }
             });
 
-            console.log(sumDiffDay);
+            window.$('.fc-header-toolbar .fc-toolbar-chunk:nth-child(2)').html('<b>Diese Woche:</b> ' + this._format(moment.duration(sumDiffWeek)));
 
             /*let sum = 0;
             for (let i = 0; i < sumDiffDay.length; i++) {
@@ -78,6 +86,19 @@ class ReportContent extends React.Component {
                 window.$('tr.fc-list-day[data-date=' + sumDiffDay[i].day.format('YYYY-MM-DD') + '] a.fc-list-day-text').append(' <b>Gesamt:</b> ' + );
             }*/
         });
+    }
+
+    /**
+     * Format Millisekunden Moment Duration Objekt in Stunden:Minuten:Sekunden um
+     * 
+     * @param {*} duration Moment Duration Objekt
+     */
+    _format(duration) {
+        let hours = duration.hours(),
+            minutes = duration.minutes(),
+            seconds = duration.seconds();
+
+        return (hours < 10 ? '0' + hours : hours) + ':' + (minutes < 10 ? '0' + minutes : minutes) + ':' + (seconds < 10 ? '0' + seconds : seconds);
     }
 }
 
