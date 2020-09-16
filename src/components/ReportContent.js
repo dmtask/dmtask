@@ -38,7 +38,6 @@ class ReportContent extends React.Component {
     componentDidMount() {
         let db = firebase.firestore(),
             calendar = this.calendarRef.current.getApi(),
-            sumDiffDay = [],
             sumDiffWeek = 0;
 
         db.collection('times').get().then((query) => {
@@ -53,15 +52,6 @@ class ReportContent extends React.Component {
 
                 calendar.addEvent(event);
 
-                /*if (moment(doc.data().end.toDate()).isSame(calendar.getDate(), 'day')) {
-                    let duration = moment.duration(moment(doc.data().end.toDate()).diff(doc.data().start.toDate()));
-
-                    sumDiffDay.push({
-                        day: moment(doc.data().end.toDate()),
-                        duration: duration.milliseconds()
-                    });
-                }*/
-
                 if (moment(doc.data().start.toDate()).isSame(calendar.getDate(), 'isoWeek') && moment(doc.data().end.toDate()).isSame(calendar.getDate(), 'isoWeek')) {
                     let duration = moment.duration(moment(doc.data().end.toDate()).diff(doc.data().start.toDate()));
 
@@ -70,21 +60,6 @@ class ReportContent extends React.Component {
             });
 
             window.$('.fc-header-toolbar .fc-toolbar-chunk:nth-child(2)').html('<b>Diese Woche:</b> ' + this._format(moment.duration(sumDiffWeek)));
-
-            /*let sum = 0;
-            for (let i = 0; i < sumDiffDay.length; i++) {
-                console.log(sumDiffDay[i].day.format('YYYY-MM-DD'));
-                console.log(window.$('tr.fc-list-day').attr('data-date'));
-                console.log(window.$('tr.fc-list-day').attr('data-date') === sumDiffDay[i].day.format('YYYY-MM-DD'));
-
-                if (window.$('tr.fc-list-day').attr('data-date') === sumDiffDay[i].day.format('YYYY-MM-DD')) {
-                    sum += sumDiffDay[i].duration;
-                }
-
-                
-
-                window.$('tr.fc-list-day[data-date=' + sumDiffDay[i].day.format('YYYY-MM-DD') + '] a.fc-list-day-text').append(' <b>Gesamt:</b> ' + );
-            }*/
         });
     }
 
