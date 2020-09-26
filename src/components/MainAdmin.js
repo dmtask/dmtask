@@ -63,6 +63,8 @@ function startTimer(event) {
         // TODO: Beim Aufruf der Seite prüfen, ob hier was drin steht und diese Zeit dann nehmen
         sessionStorage.setItem('currentTime', currentTime);
         sessionStorage.setItem('currentTimeCounter', (hours + ':' + minutes + ':' + seconds));
+
+        _checkSessionStorage();
     }, 1000);
 }
 
@@ -112,6 +114,14 @@ function _pad(value) {
         return '0' + value;
     } else {
         return value;
+    }
+}
+
+function _checkSessionStorage() {
+    if (sessionStorage.getItem('currentTime') !== null && sessionStorage.getItem('currentTimeCounter') !== null) {
+        window.onbeforeunload = () => {
+            return '';
+        };
     }
 }
 

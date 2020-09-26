@@ -61,6 +61,8 @@ class ReportContent extends React.Component {
 
             window.$('.fc-header-toolbar .fc-toolbar-chunk:nth-child(2)').html('<b>Diese Woche:</b> ' + this._format(moment.duration(sumDiffWeek)));
         });
+
+        this._addClickEventsToCalendarButtons();
     }
 
     /**
@@ -74,6 +76,39 @@ class ReportContent extends React.Component {
             seconds = duration.seconds();
 
         return (hours < 10 ? '0' + hours : hours) + ':' + (minutes < 10 ? '0' + minutes : minutes) + ':' + (seconds < 10 ? '0' + seconds : seconds);
+    }
+
+    _addClickEventsToCalendarButtons() {
+        let $ = window.$,
+            me = this;
+
+        $('.fc-prev-button').on('click', () => {
+            me._loadSumDiffWeek();
+        });
+        $('.fc-next-button').on('click', () => {
+            me._loadSumDiffWeek();
+        });
+        $('.fc-today-button').on('click', () => {
+            me._loadSumDiffWeek();
+        });
+    }
+
+    _loadSumDiffWeek() {
+        let db = firebase.firestore(),
+            calendar = this.calendarRef.current.getApi(),
+            sumDiffWeek = 0;
+
+        db.collection('times').get().then((query) => {
+            query.forEach((doc) => {
+                if (moment(doc.data().start.toDate()).isSame(calendar.getDate(), 'isoWeek') && moment(doc.data().end.toDate()).isSame(calendar.getDate(), 'isoWeek')) {
+                    let duration = moment.duration(moment(doc.data().end.toDate()).diff(doc.data().start.toDate()));
+
+                    sumDiffWeek += duration.asMilliseconds();
+                }
+            });
+
+            window.$('.fc-header-toolbar .fc-toolbar-chunk:nth-child(2)').html('<b>Diese Woche:</b> ' + this._format(moment.duration(sumDiffWeek)));
+        });
     }
 }
 
