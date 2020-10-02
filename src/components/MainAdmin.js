@@ -60,7 +60,6 @@ function startTimer(event) {
 
         document.getElementById('timeCounter').innerText = (hours + ':' + minutes + ':' + seconds);
 
-        // TODO: Beim Aufruf der Seite prüfen, ob hier was drin steht und diese Zeit dann nehmen
         sessionStorage.setItem('currentTime', currentTime);
         sessionStorage.setItem('currentTimeCounter', (hours + ':' + minutes + ':' + seconds));
 
