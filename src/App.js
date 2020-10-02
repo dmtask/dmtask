@@ -3,6 +3,7 @@ import {HashRouter, Route, Redirect} from 'react-router-dom';
 import Home from './pages/Home';
 import Admin from './pages/Admin';
 import Report from './pages/Report';
+import Holiday from './pages/Holiday';
 import Login from './pages/Login';
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -31,6 +32,7 @@ function App() {
             </Route>
             <Route path={"/admin"} render={() => user !== null ? (<Admin />) : (<Redirect to="/login" />)} />
             <Route path={"/report"} render={() => user !== null ? (<Report />) : (<Redirect to="/login" />)} />
+            <Route path={"/holiday"} render={() => user !== null ? (<Holiday />) : (<Redirect to="/login" />)} />
             <Route path={'/login'}>
                 <Login />
             </Route>
