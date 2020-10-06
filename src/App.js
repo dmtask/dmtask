@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import firebase from "firebase/app";
 import "firebase/auth";
 
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 function App() {
