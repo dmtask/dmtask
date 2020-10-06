@@ -23,7 +23,10 @@ function MainAdmin() {
                         <input type="submit" value="Stop Timer" onClick={stopTimer} className="btn btn-danger stopButton hidden" />
                     </form>
                 </div>
-                <div id="timeCounter" className="col-4"></div>
+                <div className="col-2">
+                <input type="text" placeholder="Startzeit" className="form-control" id="startTimeInput" />
+                </div>
+                <div id="timeCounter" className="col-2"></div>
             </div>
 
             <div className="row">
@@ -44,12 +47,17 @@ function startTimer(event) {
     event.preventDefault();
 
     let stopButton = document.getElementsByClassName('stopButton')[0],
-        startButton = document.getElementsByClassName('startButton')[0];
+        startButton = document.getElementsByClassName('startButton')[0],
+        startTimeInput = document.getElementById('startTimeInput').value;
 
     startButton.classList.add('hidden');
     stopButton.classList.remove('hidden');
 
-    start = moment();
+    if (startTimeInput !== '') {
+        start = moment(startTimeInput, 'HH:mm');
+    } else {
+        start = moment();
+    }
 
     interval = setInterval(function() {
         let currentTime = moment();

@@ -46,7 +46,7 @@ class ReportContent extends React.Component {
                     id: doc.id,
                     start: doc.data().start.toDate(),
                     end: doc.data().end.toDate(),
-                    title: doc.data().description + ' (Zeit: ' + doc.data().hours + ':' + doc.data().minutes + ':' + doc.data().seconds + ')',
+                    title: doc.data().description + ' (Zeit: ' + doc.data().hours + ':' + doc.data().minutes + ':' + doc.data().seconds + ' Std.)',
                     editable: false
                 };
 
@@ -59,7 +59,7 @@ class ReportContent extends React.Component {
                 }
             });
 
-            window.$('.fc-header-toolbar .fc-toolbar-chunk:nth-child(2)').html('<b>Diese Woche:</b> ' + this._format(moment.duration(sumDiffWeek)));
+            window.$('.fc-header-toolbar .fc-toolbar-chunk:nth-child(2)').html('<b>Diese Woche:</b> ' + this._format(moment.duration(sumDiffWeek)) + ' Std.');
         });
 
         this._addClickEventsToCalendarButtons();
@@ -107,7 +107,7 @@ class ReportContent extends React.Component {
                 }
             });
 
-            window.$('.fc-header-toolbar .fc-toolbar-chunk:nth-child(2)').html('<b>Diese Woche:</b> ' + this._format(moment.duration(sumDiffWeek)));
+            window.$('.fc-header-toolbar .fc-toolbar-chunk:nth-child(2)').html('<b>Diese Woche:</b> ' + this._format(moment.duration(sumDiffWeek)) + ' Std.');
         });
     }
 }
