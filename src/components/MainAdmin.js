@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import { ToastContainer, toast } from 'react-toastify';
 
 const firebase = require("firebase");
 require("firebase/firestore");
@@ -28,17 +29,7 @@ function MainAdmin() {
                 </div>
                 <div id="timeCounter" className="col-2"></div>
             </div>
-
-            <div className="row">
-                <div className="col-4"></div>
-                <div role="alert" aria-live="assertive" aria-atomic="true" className="toast col-4" data-autohide="true" data-delay="5000">
-                    <div className="toast-header">
-                        Zeittracking
-                    </div>
-                    <div className="toast-body"></div>
-                </div>
-                <div className="col-4"></div>
-            </div>
+            <ToastContainer />
         </main>
     );
 }
@@ -108,11 +99,9 @@ function save(start, end, diff, description) {
         start: start,
         description: description || ''
     }).then(() => {
-        window.$('.toast-body').text('Zeit wurde erfolgreich eingetragen.');
-        window.$('.toast').toast('show');
+        toast.success('Zeit wurde erfolgreich eingetragen.');
     }).catch((error) => {
-        window.$('.toast-body').text('Fehler beim eintragen der Zeit: ' + error);
-        window.$('.toast').toast('show');
+        toast.error('Fehler beim eintragen der Zeit: ' + error);
     });
 }
 
