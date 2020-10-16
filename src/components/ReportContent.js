@@ -4,6 +4,8 @@ import listPlugin from '@fullcalendar/list';
 import deLocale from '@fullcalendar/core/locales/de';
 import moment from 'moment';
 
+import EditModal from './editModal';
+
 const firebase = require("firebase");
 require("firebase/firestore");
 
@@ -28,9 +30,13 @@ class ReportContent extends React.Component {
                             locales={[ deLocale ]}
                             locale="de"
                             firstDay={this.first_day}
+                            eventClick={(info) => {
+                                this.edit(info);
+                            }}
                         />
                     </div>
                 </div>
+                <EditModal />
             </main>
         );
     }
@@ -47,7 +53,7 @@ class ReportContent extends React.Component {
                     start: doc.data().start.toDate(),
                     end: doc.data().end.toDate(),
                     title: doc.data().description + ' (Zeit: ' + doc.data().hours + ':' + doc.data().minutes + ':' + doc.data().seconds + ' Std.)',
-                    editable: false
+                    editable: true
                 };
 
                 calendar.addEvent(event);
@@ -63,6 +69,11 @@ class ReportContent extends React.Component {
         });
 
         this._addClickEventsToCalendarButtons();
+    }
+
+
+    edit(info) {
+        window.$('#editEventModal').modal('show');
     }
 
     /**
