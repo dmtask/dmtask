@@ -18,6 +18,15 @@ nav.bg-light a {
     vertical-align: text-top;
 }
 
+button.nav-link,
+button.nav-link:focus {
+    background: none;
+    border: none;
+    color: #fff !important;
+    font-weight: 300;
+    outline: none;
+}
+
 .optionalTitle {
     color: red;
 }
