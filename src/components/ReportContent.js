@@ -31,7 +31,9 @@ class ReportContent extends React.Component {
                             locale="de"
                             firstDay={this.first_day}
                             eventClick={(info) => {
-                                this.edit(info);
+                                this._buildEditObject(info, () => {
+                                    window.$('#editEventModal').modal('show');
+                                });
                             }}
                         />
                     </div>
@@ -71,9 +73,15 @@ class ReportContent extends React.Component {
         this._addClickEventsToCalendarButtons();
     }
 
+    _buildEditObject(info, callback) {
+        console.log(info);
+        sessionStorage.setItem('editEventObject', JSON.stringify({
+            start: info.event.start,
+            end: info.event.end,
+            title: info.event.title
+        }));
 
-    edit(info) {
-        window.$('#editEventModal').modal('show');
+        callback();
     }
 
     /**
@@ -94,13 +102,13 @@ class ReportContent extends React.Component {
             me = this;
 
         $('.fc-prev-button').on('click', () => {
-            me._loadSumDiffWeek();
+            this._loadSumDiffWeek();
         });
         $('.fc-next-button').on('click', () => {
-            me._loadSumDiffWeek();
+            this._loadSumDiffWeek();
         });
         $('.fc-today-button').on('click', () => {
-            me._loadSumDiffWeek();
+            this._loadSumDiffWeek();
         });
     }
 
