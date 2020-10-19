@@ -29,7 +29,7 @@ class EditModal extends React.Component {
     }
 
     handleChange() {
-
+        
     }
 
     render() {

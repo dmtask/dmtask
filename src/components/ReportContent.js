@@ -67,7 +67,7 @@ class ReportContent extends React.Component {
                 }
             });
 
-            window.$('.fc-header-toolbar .fc-toolbar-chunk:nth-child(2)').html('<b>Diese Woche:</b> ' + this._format(moment.duration(sumDiffWeek)) + ' Std.');
+            window.$('.fc-header-toolbar .fc-toolbar-chunk:nth-child(2)').html('<b>Gesamt Woche:</b> ' + (sumDiffWeek / (1000 * 60 * 60)).toFixed(2) + ' Std.');
         });
 
         this._addClickEventsToCalendarButtons();
@@ -98,8 +98,7 @@ class ReportContent extends React.Component {
     }
 
     _addClickEventsToCalendarButtons() {
-        let $ = window.$,
-            me = this;
+        let $ = window.$;
 
         $('.fc-prev-button').on('click', () => {
             this._loadSumDiffWeek();
@@ -121,12 +120,11 @@ class ReportContent extends React.Component {
             query.forEach((doc) => {
                 if (moment(doc.data().start.toDate()).isSame(calendar.getDate(), 'isoWeek') && moment(doc.data().end.toDate()).isSame(calendar.getDate(), 'isoWeek')) {
                     let duration = moment.duration(moment(doc.data().end.toDate()).diff(doc.data().start.toDate()));
-
                     sumDiffWeek += duration.asMilliseconds();
                 }
             });
 
-            window.$('.fc-header-toolbar .fc-toolbar-chunk:nth-child(2)').html('<b>Diese Woche:</b> ' + this._format(moment.duration(sumDiffWeek)) + ' Std.');
+            window.$('.fc-header-toolbar .fc-toolbar-chunk:nth-child(2)').html('<b>Gesamt Woche:</b> ' + (sumDiffWeek / (1000 * 60 * 60)).toFixed(2) + ' Std.');
         });
     }
 }
