@@ -4,6 +4,8 @@ import listPlugin from '@fullcalendar/list';
 import deLocale from '@fullcalendar/core/locales/de';
 import moment from 'moment';
 
+import EditModal from './editModal';
+
 const firebase = require("firebase");
 require("firebase/firestore");
 
@@ -28,9 +30,15 @@ class ReportContent extends React.Component {
                             locales={[ deLocale ]}
                             locale="de"
                             firstDay={this.first_day}
+                            eventClick={(info) => {
+                                this._buildEditObject(info, () => {
+                                    window.$('#editEventModal').modal('show');
+                                });
+                            }}
                         />
                     </div>
                 </div>
+                <EditModal />
             </main>
         );
     }
@@ -47,7 +55,7 @@ class ReportContent extends React.Component {
                     start: doc.data().start.toDate(),
                     end: doc.data().end.toDate(),
                     title: doc.data().description + ' (Zeit: ' + doc.data().hours + ':' + doc.data().minutes + ':' + doc.data().seconds + ' Std.)',
-                    editable: false
+                    editable: true
                 };
 
                 calendar.addEvent(event);
@@ -59,10 +67,21 @@ class ReportContent extends React.Component {
                 }
             });
 
-            window.$('.fc-header-toolbar .fc-toolbar-chunk:nth-child(2)').html('<b>Diese Woche:</b> ' + this._format(moment.duration(sumDiffWeek)) + ' Std.');
+            window.$('.fc-header-toolbar .fc-toolbar-chunk:nth-child(2)').html('<b>Gesamt Woche:</b> ' + (sumDiffWeek / (1000 * 60 * 60)).toFixed(2) + ' Std.');
         });
 
         this._addClickEventsToCalendarButtons();
+    }
+
+    _buildEditObject(info, callback) {
+        console.log(info);
+        sessionStorage.setItem('editEventObject', JSON.stringify({
+            start: info.event.start,
+            end: info.event.end,
+            title: info.event.title
+        }));
+
+        callback();
     }
 
     /**
@@ -79,17 +98,16 @@ class ReportContent extends React.Component {
     }
 
     _addClickEventsToCalendarButtons() {
-        let $ = window.$,
-            me = this;
+        let $ = window.$;
 
         $('.fc-prev-button').on('click', () => {
-            me._loadSumDiffWeek();
+            this._loadSumDiffWeek();
         });
         $('.fc-next-button').on('click', () => {
-            me._loadSumDiffWeek();
+            this._loadSumDiffWeek();
         });
         $('.fc-today-button').on('click', () => {
-            me._loadSumDiffWeek();
+            this._loadSumDiffWeek();
         });
     }
 
@@ -102,12 +120,11 @@ class ReportContent extends React.Component {
             query.forEach((doc) => {
                 if (moment(doc.data().start.toDate()).isSame(calendar.getDate(), 'isoWeek') && moment(doc.data().end.toDate()).isSame(calendar.getDate(), 'isoWeek')) {
                     let duration = moment.duration(moment(doc.data().end.toDate()).diff(doc.data().start.toDate()));
-
                     sumDiffWeek += duration.asMilliseconds();
                 }
             });
 
-            window.$('.fc-header-toolbar .fc-toolbar-chunk:nth-child(2)').html('<b>Diese Woche:</b> ' + this._format(moment.duration(sumDiffWeek)) + ' Std.');
+            window.$('.fc-header-toolbar .fc-toolbar-chunk:nth-child(2)').html('<b>Gesamt Woche:</b> ' + (sumDiffWeek / (1000 * 60 * 60)).toFixed(2) + ' Std.');
         });
     }
 }
