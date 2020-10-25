@@ -19,7 +19,7 @@ class Login extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log(process);
+        console.log(process.env);
 
         event.preventDefault();
 
