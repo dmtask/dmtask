@@ -22,6 +22,8 @@ class Login extends React.Component {
         event.preventDefault();
 
         console.log(process.env);
+        console.log(firebase);
+        console.log(firebase.remoteConfig());
 
         let password = this.state.value;
 
