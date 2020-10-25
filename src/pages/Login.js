@@ -19,6 +19,8 @@ class Login extends React.Component {
     }
 
     handleSubmit(event) {
+        console.log(process);
+
         event.preventDefault();
 
         let password = this.state.value;
