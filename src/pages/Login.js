@@ -20,6 +20,7 @@ class Login extends React.Component {
 
     handleSubmit(event) {
         console.log(process.env);
+        console.log(firebase.config());
 
         event.preventDefault();
 
