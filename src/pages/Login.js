@@ -21,10 +21,6 @@ class Login extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        console.log(process.env);
-        console.log(firebase);
-        console.log(firebase.remoteConfig());
-
         let password = this.state.value;
 
         firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION).then(function() {
