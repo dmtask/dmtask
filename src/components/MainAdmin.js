@@ -84,7 +84,7 @@ function stopTimer(event) {
 
     document.getElementById('timeCounter').innerText = '';
 
-    save(start.toDate(), end.toDate(), timeCounter, description);
+    //save(start.toDate(), end.toDate(), timeCounter, description);
 }
 
 function save(start, end, diff, description) {
