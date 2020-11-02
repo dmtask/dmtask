@@ -57,7 +57,7 @@ function menu(isAdmin) {
         return (
             <ul className='navbar-nav'>
                 <li className='nav-item'>
-                    <a className='nav-link' href='/#/admin'>Zeittracking</a>
+                    <a className='nav-link' href='/#/admin'>Start</a>
                 </li>
                 <li className='nav-item'>
                     <a className='nav-link' href='/#/holiday'>Urlaubsverwaltung</a>
