@@ -9,6 +9,9 @@ function MainAdmin() {
                 </div>
             </div>
             <div className="row mt-4">
+                <ul>
+                    <li><a href="/#/holiday">Urlaubsverwaltung</a></li>
+                </ul>
             </div>
         </main>
     );
