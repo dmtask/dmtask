@@ -25,7 +25,7 @@ function Main() {
                 <div className="col-6">
                     <div className="card">
                         <div className="card-body mr-auto ml-auto">
-                            <a href="http://dmtask.bplaced.net/" target="_blank">Password Generator</a>
+                            <a href="http://dmtask.bplaced.net/" target="_blank" rel="noopener noreferrer">Password Generator</a>
                         </div>
                     </div>
                 </div>
