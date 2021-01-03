@@ -14,6 +14,22 @@ function Main() {
                     <h2>Hallo Welt!</h2>
                 </div>
             </div>
+            <div className="row mt-2 mb-4">
+                <div className="col-6">
+                    <div className="card">
+                        <div className="card-body mr-auto ml-auto">
+                            <a href="/#/blog">Blogbeiträge</a>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-6">
+                    <div className="card">
+                        <div className="card-body mr-auto ml-auto">
+                            <a href="http://dmtask.bplaced.net/" target="_blank">Password Generator</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
     );
 }

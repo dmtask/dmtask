@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Admin from './pages/Admin';
 import Holiday from './pages/Holiday';
 import Login from './pages/Login';
+import Blog from './pages/Blog';
 import firebase from "firebase/app";
 import "firebase/auth";
 
@@ -34,6 +35,9 @@ function App() {
             <Route path={"/holiday"} render={() => user !== null ? (<Holiday />) : (<Redirect to="/login" />)} />
             <Route path={'/login'}>
                 <Login />
+            </Route>
+            <Route path={'/blog'}>
+                <Blog />
             </Route>
         </HashRouter>
     );
