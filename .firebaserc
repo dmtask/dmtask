@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "dm-task-20dee"
+  },
+  "targets": {
+    "dm-task-20dee": {
+      "hosting": {
+        "dm-task-stage": [
+          "dm-task-20dee"
+        ],
+        "dm-task": [
+          "dmtask"
+        ]
+      }
+    }
   }
 }
