@@ -46,10 +46,16 @@ function menu(isAdmin) {
         return (
             <ul className='navbar-nav'>
                 <li className='nav-item'>
-                    <a className='nav-link projects' href="https://github.com/dmtask" target="_blank" rel="noopener noreferrer">Projekte</a>
+                    <a className='nav-link' href="https://github.com/dmtask" target="_blank" rel="noopener noreferrer">Projekte</a>
+                </li>
+                <li>
+                    <a className='nav-link' href="http://dmtask.bplaced.net/" target="_blank" rel="noopener noreferrer">Password Generator</a>
                 </li>
                 <li className='nav-item'>
-                    <a className='nav-link contacts' href='mailto:dmtask@gmx.de'>Kontakt</a>
+                    <a className='nav-link' href='mailto:dmtask@gmx.de'>Kontakt</a>
+                </li>
+                <li className='nav-item'>
+                    <a className='nav-link' href='/#/imprint'>Impressum</a>
                 </li>
             </ul>
         );
