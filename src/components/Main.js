@@ -16,16 +16,6 @@ function Main() {
             </div>
             <div className="row mt-2 mb-4">
                 <div className="col-6">
-                    <div className="card">
-                        <div className="card-body mr-auto ml-auto">
-                            <h5 className="card-title">
-                            
-                            </h5>
-                            <p className="card-text">
-                                
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </main>
