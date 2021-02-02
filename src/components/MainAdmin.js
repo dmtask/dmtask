@@ -11,6 +11,7 @@ function MainAdmin() {
             <div className="row mt-4">
                 <ul>
                     <li><a href="/#/holiday">Urlaubsverwaltung</a></li>
+                    <li><a href="/#/overtime">Überstunden</a></li>
                 </ul>
             </div>
         </main>

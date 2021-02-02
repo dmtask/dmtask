@@ -32,7 +32,7 @@ class Holiday extends React.Component {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th className="align-middle">Verplant</th>
+                                        <th className="align-middle">Verplant <br />(1 Weiberdonnerstag, 1 Rosenmontag, 0,5 Weihnachten, 0,5 Silvester)</th>
                                         <td>
                                             <input type="text" className="form-control" id="holiday_plan" onChange={this.calc} />
                                         </td>
