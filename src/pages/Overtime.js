@@ -16,9 +16,9 @@ class Overtime extends React.Component {
                 <Header optionalTitle='ADMIN' isAdmin={true} />
                 <main role="main" className="container-fluid">
                     <div className="row flex-xl-nowrap mt-4">
-                            <div className="col-12">
-                                <h2>Überstundenverwaltung</h2>
-                            </div>
+                        <div className="col-12">
+                            <h2>Überstundenverwaltung</h2>
+                        </div>
                     </div>
                     <div className="row mt-4">
                         <div className="col-3"></div>
@@ -28,7 +28,7 @@ class Overtime extends React.Component {
                                     <tr>
                                         <th className="align-middle">gesamt (Std.)</th>
                                         <td>
-                                            <input type="text" className="form-control" id="sum" onChange={this.calc} />
+                                            <input type="text" className="form-control" id="sum" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -59,10 +59,6 @@ class Overtime extends React.Component {
                 document.getElementById('sum').value = overtime_doc_ref.data().sum;
             }
         });
-    }
-
-    calc() {
-        // TODO
     }
 
     save() {
