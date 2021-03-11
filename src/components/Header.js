@@ -69,6 +69,9 @@ function menu(isAdmin) {
                     <a className='nav-link' href='/#/holiday'>Urlaubsverwaltung</a>
                 </li>
                 <li className='nav-item'>
+                    <a className='nav-link' href='/#/overtime'>Überstunden</a>
+                </li>
+                <li className='nav-item'>
                     <button className='nav-link' onClick={logout}>Logout</button>
                 </li>
             </ul>
