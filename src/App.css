@@ -27,12 +27,12 @@ button.nav-link:focus {
     outline: none;
 }
 
-.optionalTitle {
-    color: red;
+.navbar-nav-svg {
+    fill: #fff;
 }
 
-.card a {
-    float: right;
+.optionalTitle {
+    color: red;
 }
 
 .errorsLogin {
