@@ -13,13 +13,9 @@ const Imprint = () => {
             </div>
             <div className="row mt-2">
                 <div className="col-12 m-4">
-                    <h2>Angaben gem&auml;&szlig; &sect; 5 TMG</h2>
-                    <p>Daniel Mertgen<br />
-                    Raiffeisenstra&szlig;e 2<br />
-                    56587 Stra&szlig;enhaus</p>
-
                     <h2>Kontakt</h2>
-                    <p>E-Mail: dmtask@gmx.de</p>
+                    <p>Daniel Mertgen</p>
+                    <p>E-Mail: <a href="mailto:dmtask@gmx.de">dmtask@gmx.de</a></p>
 
                     <h2>Redaktionell Verantwortlicher</h2>
                     <p>Der Betreiber der Webseite</p>
@@ -33,8 +29,6 @@ const Imprint = () => {
                     <h3>Urheberrecht</h3>
                     <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielf&auml;ltigung, Bearbeitung, Verbreitung und jede Art der Verwertung au&szlig;erhalb der Grenzen des Urheberrechtes bed&uuml;rfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur f&uuml;r den privaten, nicht kommerziellen Gebrauch gestattet.</p>
                     <p>Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
-
-                    <p>Quelle: <a href="https://www.e-recht24.de">e-recht24.de</a></p>
                 </div>
             </div>
             <Footer />
