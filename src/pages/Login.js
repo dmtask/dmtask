@@ -41,7 +41,7 @@ class Login extends React.Component {
         } else {
             return (
                 <React.Fragment>
-                    <Header optionalTitle='ADMIN' isAdmin={true} />
+                    <Header optionalTitle='Intern' isAdmin={true} />
                     <main role="main" className="container-fluid">
                         <div className="row flex-xl-nowrap mt-4 errorsLogin">
                             <div className="alert alert-danger" role="alert"></div>

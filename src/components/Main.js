@@ -12,8 +12,8 @@ function Main() {
             <div className="row">
                 <div className="col-12 text-center">
                     <h2>Willkommen Welt!</h2>
-                    Diese Webseite enthält keinen öffentlichen Inhalt und dient lediglich als Spielwiese für mich.
-                    Meine Projekte findet Ihr auf github.
+                    Diese Webseite enthält aktuell keinen öffentlichen Inhalt.
+                    Meine Projekte findet Ihr auf <a href="https://github.com/dmtask" target="_blank" rel="noopener noreferrer">github</a>.
                 </div>
             </div>
             <div className="row mt-2 mb-4">

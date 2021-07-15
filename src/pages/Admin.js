@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 function Admin() {
   return (
     <React.Fragment>
-        <Header optionalTitle='ADMIN' isAdmin={true} />
+        <Header optionalTitle='Intern' isAdmin={true} />
         <MainAdmin />
         <Footer />
     </React.Fragment>

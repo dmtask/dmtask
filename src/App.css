@@ -18,6 +18,10 @@ nav.bg-light a {
     vertical-align: text-top;
 }
 
+.navbar-toggler-icon {
+    background-image: none;
+}
+
 button.nav-link,
 button.nav-link:focus {
     background: none;
@@ -35,21 +39,7 @@ button.nav-link:focus {
     color: red;
 }
 
-.errorsLogin {
-    display: none;
-}
-
+.errorsLogin,
 .hidden {
     display: none;
-}
-
-.badge {
-    padding: 0.8em;
-    font-size: 0.8em;
-    margin-right: 1em;
-}
-
-#timeCounter {
-    margin-top: 8px;
-    font-weight: bold;
 }

@@ -8,7 +8,11 @@ const Header = (props) => {
         <nav className='navbar navbar-expand-lg navbar-light bg-light sticky-top'>
             <a className='navbar-brand' href='/'>DM - Task<span className='optionalTitle'> {props.optionalTitle}</span></a>
             <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
-                <span className='navbar-toggler-icon'></span>
+                <span className='navbar-toggler-icon'>
+                    <svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'>
+                        <path stroke='rgb(255, 255, 255)' strokeWidth='2' strokeLinecap='round' strokeMiterlimit='10' d='M4 8h24M4 16h24M4 24h24'/>
+                    </svg>
+                </span>
             </button>
             <div className='collapse navbar-collapse' id='navbarNav'>
                 {menu(props.isAdmin)}

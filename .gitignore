@@ -25,7 +25,5 @@ yarn-error.log*
 
 *.env
 
-public/downloads/*.zip
-
 .idea
 public/.idea

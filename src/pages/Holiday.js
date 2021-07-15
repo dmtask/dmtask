@@ -13,12 +13,12 @@ class Holiday extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <Header optionalTitle='ADMIN' isAdmin={true} />
+                <Header optionalTitle='Intern' isAdmin={true} />
                 <main role="main" className="container-fluid">
                     <div className="row flex-xl-nowrap mt-4">
-                            <div className="col-12">
-                                <h2>Urlaubsverwaltung</h2>
-                            </div>
+                        <div className="col-12">
+                            <h2>Urlaubsverwaltung</h2>
+                        </div>
                     </div>
                     <div className="row mt-4">
                         <div className="col-3"></div>

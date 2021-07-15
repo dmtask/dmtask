@@ -13,11 +13,11 @@ class Overtime extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <Header optionalTitle='ADMIN' isAdmin={true} />
+                <Header optionalTitle='Intern' isAdmin={true} />
                 <main role="main" className="container-fluid">
                     <div className="row flex-xl-nowrap mt-4">
                         <div className="col-12">
-                            <h2>Überstundenverwaltung</h2>
+                            <h2>Überstunden</h2>
                         </div>
                     </div>
                     <div className="row mt-4">
