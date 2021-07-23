@@ -31,7 +31,8 @@ button.nav-link:focus {
     outline: none;
 }
 
-.navbar-nav-svg {
+.navbar-nav-svg,
+.scroll-indicator svg path {
     fill: #fff;
 }
 
@@ -42,4 +43,13 @@ button.nav-link:focus {
 .errorsLogin,
 .hidden {
     display: none;
+}
+
+.scroll-indicator {
+    position: absolute;
+    left: 50%;
+}
+
+.scroll-indicator svg {
+    height: 40px;
 }
