@@ -52,4 +52,11 @@ button.nav-link:focus {
 
 .scroll-indicator svg {
     height: 40px;
+    animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
 }
